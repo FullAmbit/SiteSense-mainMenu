@@ -71,20 +71,27 @@ $this->fields=array(
 			</p>
 		'
 	),
-	/*'module' => array(
-		'label' => 'Module',
-		'tag' => 'input',
+	'side' => array(
+		'label' => 'Side',
+		'tag' => 'select',
 		'required' => true,
-		'value' => isset($data->output['menuItem']['module']) ? $data->output['menuItem']['module'] : '',
-		'params' => array(
-			'type' => 'text'
-		),
+		'value' => (isset($data->output['menuItem']['side'])) ? $data->output['menuItem']['side'] : '',
 		'description' => '
 			<p>
-				<b>Module</b> - Which module is this associated with?
+				<b>Side</b> - Which side of the menu should this appear on?
 			</p>
-		'
-	),*/
+		',
+		'options' => array(
+			array(
+				'text'  => 'Right',
+				'value' => 'right',
+			),
+			array(
+				'text'  => 'Left',
+				'value' => 'left',
+			),
+		),
+	),
 	'enabled' => array(
 		'label' => $data->phrases['main-menu']['labelItemEnable'],
 		'tag' => 'input',

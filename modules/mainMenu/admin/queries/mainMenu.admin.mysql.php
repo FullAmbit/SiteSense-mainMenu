@@ -67,11 +67,12 @@ function admin_mainMenu_addQueries() {
 				url = :url,
 				enabled = :enabled,
 				sortOrder = :sortOrder,
-				parent = :parent
+				parent = :parent,
+				side = :side
 			WHERE id = :id
 		',
 		'newMenuItem' => '
-			INSERT INTO !prefix!main_menu!lang! (text,title,url,sortOrder,enabled,parent) VALUES (:text,:title,:url,:sortOrder,:enabled,:parent)
+			INSERT INTO !prefix!main_menu!lang! (text,title,url,sortOrder,enabled,parent,side) VALUES (:text,:title,:url,:sortOrder,:enabled,:parent,:side)
 		',
 		'shiftOrderUpByID' => '
 			UPDATE !prefix!main_menu!lang!
