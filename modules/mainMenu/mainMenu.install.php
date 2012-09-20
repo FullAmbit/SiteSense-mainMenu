@@ -26,7 +26,7 @@ function mainMenu_settings() {
 	return array(
 		'name'      => 'mainMenu',
 		'shortName' => 'main-menu',
-		'version'   => '1.0.1'
+		'version'   => '1.0.2'
 	);
 }
 function mainMenu_install($db,$drop=false,$firstInstall=false,$lang="en_us") {
