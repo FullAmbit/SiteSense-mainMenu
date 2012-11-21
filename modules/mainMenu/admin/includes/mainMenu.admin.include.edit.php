@@ -44,10 +44,7 @@ function admin_mainMenuBuild($data,$db) {
 	$data->output['MenuItemForm'] = new formHandler('item',$data,true);
 	$data->output['MenuItemForm']->caption = 'Editing Menu Item';
 	$data->output['MenuItemForm']->fields['parent']['options'] = array_merge($data->output['MenuItemForm']->fields['parent']['options'], admin_mainMenuOptions($data,$db));
-	if (
-		(!empty($_POST['fromForm'])) &&
-		($_POST['fromForm']==$data->output['MenuItemForm']->fromForm)
-	) {
+	if ((!empty($_POST['fromForm']))&&($_POST['fromForm']==$data->output['MenuItemForm']->fromForm)){
 		$data->output['MenuItemForm']->populateFromPostData();
 		if ($data->output['MenuItemForm']->validateFromPost()) {
 			// Are We Updating Sort-Order Based Off Parent?
@@ -57,6 +54,7 @@ function admin_mainMenuBuild($data,$db) {
 			} else {
 				$data->output['MenuItemForm']->sendArray[':sortOrder'] = $data->output['menuItem']['sortOrder'];
 			}
+			$data->output['MenuItemForm']->sendArray[':url'] = str_replace('|',$data->linkRoot,$data->output['MenuItemForm']->sendArray[':url']);
 			$statement = $db->prepare('editMenuItem','admin_mainMenu');
 			$data->output['MenuItemForm']->sendArray[':id'] = $existing;
 			$statement->execute($data->output['MenuItemForm']->sendArray) or die('Saving Menu Item failed');
